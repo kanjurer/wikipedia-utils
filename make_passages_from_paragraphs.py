@@ -25,6 +25,7 @@ def generate_passages(
     paragraphs_file: str,
     passage_unit: str,
     passage_boundary: str,
+    title_passage_boundary: str,
     append_title_to_passage_text: bool,
     max_passage_length: int,
     as_long_as_possible: bool,
@@ -74,7 +75,7 @@ def generate_passages(
                 for passage_text in generate_passage_texts(unit_texts):
                     passage_id += 1
                     if append_title_to_passage_text:
-                        passage_text = last_title + args.title_passage_boundary + passage_text
+                        passage_text = last_title + title_passage_boundary + passage_text
 
                     assert last_pageid is not None
                     assert last_revid is not None
@@ -139,6 +140,7 @@ def main(args: argparse.Namespace):
             paragraphs_file=args.paragraphs_file,
             passage_unit=args.passage_unit,
             passage_boundary=args.passage_boundary,
+            title_passage_boundary=args.title_passage_boundary,
             append_title_to_passage_text=args.append_title_to_passage_text,
             max_passage_length=args.max_passage_length,
             as_long_as_possible=args.as_long_as_possible,
